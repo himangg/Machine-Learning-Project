@@ -7,6 +7,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+\usepackage[top=0in, bottom=0.7in, left=0.7in, right=0.7in]{geometry} % Adjust margins here
+
+
 \usepackage[breaklinks=true,bookmarks=false]{hyperref}
 
 \cvprfinalcopy
@@ -16,14 +19,16 @@
 \setcounter{page}{4321}
 \begin{document}
 
-\title{Project Proposal}
+\title{DeepDetect : Using CV and CNNs to Detect Fake Images and Prevent Misinformation Proposal}
 
 \author{Himang Chandra Garg \qquad Dasari Sai Harsh \qquad Nishil Agarwal \qquad Piyush Narula\\
 Indraprastha Institute of Information Technology, Delhi\\
-{\tt\small \{himang22214, dasari22144, nishil22334, piyush\}@iiitd.ac.in}
+{\tt\small \{himang22214, dasari22144, nishil22334, piyush22354\}@iiitd.ac.in}
 }
 
 \maketitle
+
+\pagestyle{empty}
 
 %-------------------------------------------------------------------------
 \section{Motivation}
@@ -35,12 +40,10 @@ The goal is to enhance the ability to discern genuine content from fabricated im
 
 The recent rise in AI content, particularly deepfake images and videos, has raised serious concerns about the integrity of information online. 
 This synthetic media is often indistinguishable from real content, hence making it very difficult for an average person to tell the truth—an aspect with large implications in public trust, privacy, and security.
-Enhancements in detections are required to counter the spread of misinformation, secure privacy, and maintain the integrity of digital media toward a more secure and trustworthy online environment.
 
 \subsection{How did you think about this?}
 
-We visualized this project after many problems of AI-generated content in work and personal experience. 
-In search of an answer for that gap, we observed that no website or app formally available is solving the challenge effectively. 
+We visualized this project after many problems of AI-generated content in work and personal experience and no website or app formally available is solving the challenge effectively. 
 This realization motivated us to create our own system—one that could effectively detect and reduce the risks associated with AI-generated content(specifically images).
 
 %------------------------------------------------------------------------
@@ -48,23 +51,24 @@ This realization motivated us to create our own system—one that could effectiv
 
 \subsection{\href{https://ijrpr.com/uploads/V4ISSUE4/IJRPR11629.pdf}{Detecting Fake Images Using Machine Learning}}
 This article utilizes methods such as Convolutional Neural Networks (CNNs) for pattern recognition, feature extraction techniques for identifying statistical properties and textures, and conventional image forensics methods like digital watermarking and error level analysis.
-\subsection{Work 2}
-
-\subsection{Work 2}
+\subsection{\href{https://www.researchgate.net/publication/375952278_Deep_Learning_for_Image_Authentication_A_Comparative_Study_on_Real_and_AI-Generated_Image_Classification}{Deep Learning for Image Authentication: AComparative Study on Real and AI-GeneratedImage Classification}}
+The paper investigates deepfake detection using neural networks like Xception, NAS-Net, MobileNet, and VGG16 with a focus on transfer learning. It employs a Kaggle dataset of real and fake faces and presents a hybrid model combining VGG16 and CNN layers, achieving 94\% accuracy. The study emphasizes hyperparameter tuning and k-fold cross-validation, making a notable contribution to cybersecurity and deepfake detection.
+\subsection{\href{https://www.techscience.com/iasc/v35n2/48928/html}{Detecting Deepfake Images Using Deep Learning Techniques and Explainable AI Methods}}
+The project aimed to create a deepfake detection system by pre-processing a large image dataset and splitting it into training, validation, and test sets. Data augmentation enhanced model generalization, while pre-trained models like InceptionResNetV2 and DenseNet201 were fine-tuned and evaluated. The best model's predictions were interpreted using the LIME algorithm for Explainable AI.
 
 %------------------------------------------------------------------------
 \section{Timeline}
 
-%------------------------------------------------------------------------
-\section{Individual Tasks}
+\begin{itemize}\setlength\itemsep{-0.4em}
+    \item Phase 1: Find datasets
+    \item Phase 2: Data preprocessing
+    \item Phase 3: Model building
+    \item Phase 4: Model refinement
+    \item Phase 5: Model optimization
+    \item Phase 6: Model testing
+    \item Phase 7: Result analysis
+\end{itemize}
 
-\subsection{Himang Chandra Garg}
-
-\subsection{Dasari Sai Harsh}
-
-\subsection{Nishil Agarwal}
-
-\subsection{Piyush Narula}
 
 %------------------------------------------------------------------------
 \section{Final Outcome}
@@ -77,5 +81,16 @@ This model, therefore, should have very high precision and recall and hence shou
 Additionally, we plan to implement a basic front-end interface that will make this detection system accessible, addressing the current lack of formal tools or platforms dedicated to this purpose.
 
 \subsection{What do you want to contribute to this idea?}
+We aim to develop a system for detecting deepfakes and AI-generated images. We will focus on machine learning techniques to accurately identify and analyze synthetic content. This project addresses the current lack of formal solutions for deepfake detection and aims to provide a reliable tool for combating misinformation.
+
+%------------------------------------------------------------------------
+\section{Individual Tasks}
+
+\begin{itemize}\setlength\itemsep{-0.4em}
+    \item Himang Chandra Garg: Model Assembly and training, Model Evaluation and Optimisation, Result and Analysis
+    \item Dasari Sai Harsh: Literature Review, Model Evaluation and Optimisation, Model Selection and Refinement
+    \item Nishil Agarwal: Data Preprocessing, Literature review, Model Assembly and training
+    \item Piyush Narula: Data Preprocessing, Model Assembly and training, Model Selection and Refinement
+\end{itemize}
 
 \end{document}
