@@ -55,42 +55,48 @@ Detecting fake images with machine learning is a difficult and growing research 
 The paper "Detecting Fake Images Using Machine Learning" by Mr. Akash K, Miss. Ahalya K, Mr. Dhinesh N, Miss. Diya Shereef delves into strategies for detecting manipulated images using both traditional image processing and machine learning approaches. The writers suggest a combination model that uses CNNs to extract features like color patterns, texture, and statistical characteristics from images. Next, these characteristics are inputted into a classifier that differentiates between authentic and altered images. The suggested model attains high accuracy and can be utilized in social media content moderation, news verification, and forensic investigations.
 
 \subsection{\href{https://www.researchgate.net/publication/375952278_Deep_Learning_for_Image_Authentication_A_Comparative_Study_on_Real_and_AI-Generated_Image_Classification}{Deep Learning for Image Authentication: A Comparative Study on Real and AI-Generated Image Classification}}
-The effectiveness of deep learning models in differentiating real images from AI-generated ones is investigated in the paper "Deep Learning for Image Authentication: A Comparative Study on Real and AI-Generated Image Classification" by Gaye Ediboglu Bartos and Serel Akyol. The research is centered around two models: Residual Networks (ResNet) and Variational Autoencoders (VAEs). ResNet, renowned for its strong feature extraction abilities, reached an impressive 94\% accuracy in distinguishing between real and synthetic images in the CIFAKE dataset, comprising 60,000 real and 60,000 AI-generated images. On the other hand, VAEs, taking an anomaly detection stance, had a lower accuracy of 71\% because of their generative nature and less discriminative architecture. The paper highlights how crucial it is to tune hyperparameters, such as batch sizes and epochs, in order to improve model performance. The findings show that ResNet is better for image authentication tasks than VAEs, which had difficulty with the CIFAKE dataset's complexity. In summary, the study emphasizes the importance of choosing the right model and optimizing it for specific tasks to improve the detection of AI-generated images. It indicates that ResNet's discriminative capabilities make it the best option for these tasks.
+The effectiveness of deep learning models in differentiating real images from AI-generated ones is investigated in the paper "Deep Learning for Image Authentication: A Comparative Study on Real and AI-Generated Image Classification" by Gaye Ediboglu Bartos and Serel Akyol. The research is centered around two models: Residual Networks (ResNet) and Variational Autoencoders (VAEs). ResNet, renowned for its strong feature extraction abilities, reached an impressive 94\% accuracy in distinguishing between real and synthetic images in the CIFAKE dataset, comprising 60,000 real and 60,000 AI-generated images. On the other hand, VAEs, taking an anomaly detection stance, had a lower accuracy of 71\% because of their generative nature and less discriminative architecture. The paper highlights how crucial it is to tune hyperparameters, such as batch sizes and epochs, in order to improve model performance.
 
-\section{Dataset Description: Real vs. Deepfake Image Detection}
-
-This dataset supports the task of detecting whether a human face image is real or a deepfake. It consists of manipulated and real images, with the manipulated images generated using various techniques. The dataset is well-suited for research in deepfake detection, machine learning ethics, and related fields.
-
-\subsection{Structure and Composition}
-
-The dataset is divided into three main directories: \texttt{Train}, \texttt{Test}, and \texttt{Validation}, each containing two subdirectories:
+\section{Dataset: Exploratory Data Analysis}
+We have used \href{https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images}{this} dataset.This dataset contains manipulated images and real images. The manipulated images are the faces which are created by various means. Each image is a 256 X 256 jpg image of human face either real or fake
+Exploratory Data Analysis (EDA) is crucial in this project for comprehending the features of both authentic and counterfeit images utilized in detection. By using bar graphs, scatter plots, and violin plots, we analyze the similarities in image size, color distribution, and saturation variances between authentic and AI-produced images. 
+This examination assists in recognizing possible disparities in class, variations in features, and discrepancies, offering crucial understanding for successful model development and assessment.
+\subsection{Visualization of Dataset}
 \begin{itemize}
-    \item \texttt{Real}: Images of real human faces.
-    \item \texttt{Fake}: Deepfake images generated using machine learning techniques.
+    \item \textbf{Class Imbalance Graphs:} In order to avoid overfitting, we analyzed the amount of images per category in both the training and validation sets. If there were a large imbalance in the number of images in a class, we would have conducted undersampling to achieve a more equal distribution in the dataset. 
+    We found no significant class imbalance.
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{2.png}
+    \end{figure}
+    \item \textbf{Scatter plot of face dimensions:} Faces were extracted from images for deepfake detection. A width vs height scatterplot was created but did not show a difference between real and fake image dimensions, suggesting it may not help distinguish them.
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.26]{3.png}
+    \end{figure}
+    
+    \item \textbf{Mean Real and Fake Face images:} We created a visual representation of the average face extracted from both the real and fake image datasets in order to compare the mean face images of each type. We noticed distinct discrepancies since they did not resemble each other.
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.25]{4.png}
+    \end{figure}
+
+    \item \textbf{RGB Intensity Violin Plots:} RGB intensities were extracted using colour histograms from real and fake face datasets. Average frequency of intensity pixels in both datasets was calculated. Violin plots were created to compare RGB differences between real and fake images. Some differences were observed but they do not seem that significant.
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{5.png}
+    \end{figure}
+
+    \item \textbf{Box plot for Colour Saturation:} We extracted colour saturation from real and fake face datasets. We generated box plots on basis of the saturation data. We observed no significant differences.
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{6.png}
+    \end{figure}
+
 \end{itemize}
 
-Each image is a \texttt{256 x 256} pixel \texttt{jpg} file, standardized for model input. This structure ensures easy handling for training and testing.
 
-\subsection{Source and Processing}
-
-The dataset is derived from \url{https://zenodo.org/record/5528418#.YpdlS2hBzDd} and has undergone preprocessing, including resizing to \texttt{256 x 256} pixels, to enhance its usability in machine learning tasks. The dataset remains static with no planned updates.
-
-\subsection{Usability of Dataset}
-
-The dataset is rated with a usability score of \textbf{6.25} and includes tags such as \texttt{Image}, \texttt{Social Networks}, \texttt{Research}, \texttt{People and Society}, and \texttt{Machine Learning Ethics}. It is ideal for applications in deepfake detection and ethical AI research.
-
-
-\subsection{Directory Structure}
-
-\begin{itemize}
-    \item \texttt{Train}: Training set with real and fake subdirectories.
-    \item \texttt{Test}: Testing set with real and fake subdirectories.
-    \item \texttt{Validation}: Validation set, similarly structured.
-\end{itemize}
-
-This organized structure facilitates seamless integration into machine learning pipelines, supporting model development stages like training, testing, and validation.
-
-\section{Methodology}
+\section{Methodology: Preprocessing and Model}
 \begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{1.png}
@@ -134,7 +140,11 @@ This combined pre-processing and augmentation strategy was carefully designed to
 \subsection{Feature Extraction}
 \textbf{Histogram of Oriented Gradients (HOG)} is a feature descriptor used in image processing and computer vision. It captures the distribution of gradients and edge directions within an image, effectively representing the shape and structure of objects. HOG is especially useful for object detection due to its invariance to changes in illumination and its ability to handle variations in object scale. 
 A csv file containing the resized images is read and the HOG feature extraction is applied to each image and the resulting embedding is saved in a separate csv.
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.35]{xd.jpg}
+    \caption{Before and After Pre-processing}
+\end{figure}\\
 \textbf{Local Binary Patterns (LBP)} is also used as a feature extraction technique due to its effectiveness in capturing texture information. LBP encodes local spatial patterns and contrasts in images, making it suitable for differentiating between real and synthetic content. The code reads a CSV file containing flattened representations of 48x48 pixel images and their labels ("Real" or "Fake"). It applies LBP feature extraction to each image, generating a normalized histogram that represents the distribution of texture patterns. These extracted features are stored in a new DataFrame with the mapped labels and saved to a CSV file .
 
 \textbf{Scale-Invariant Feature Transform (SIFT)} is a feature extraction method that identifies and describes local features in images. It detects keypoints across different scales and orientations, ensuring robustness to variations in image scale, rotation, and illumination. SIFT generates descriptors for these keypoints, which can be used for tasks such as image matching, object recognition, and classification.
@@ -234,5 +244,18 @@ Despite these efforts, the dimensionality reduction resulted in the \textbf{loss
 
 To overcome this limitation, we plan to adopt \textbf{deep learning techniques}, which are better equipped to handle complex, high-dimensional image data. These methods, combined with advanced augmentation strategies, are expected to significantly enhance the \textbf{accuracy} and \textbf{robustness} of our AI-generated image detection system.
 
-\section{References}
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{egbib}
+}
+% 1. \href{https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html}{SIFT (Scale-Invariant Feature Transform)}
+
+% 2. \href{https://machinelearningmastery.com/opencv_hog/}{HOG (Histogram of Oriented Gradients)}
+
+% 3. \href{https://aihalapathirana.medium.com/understanding-the-local-binary-pattern-lbp-a-powerful-method-for-texture-analysis-in-computer-4fb55b3ed8b8}{Local Binary Pattern (LBP)}
+
+% 4. \href{https://scikit-learn.org/1.5/modules/svm.html}{SVM (Support Vector Machine)}
+
+% 5. \href{https://scikit-learn.org/1.5/modules/svm.html}{Random Forest}
+
 \end{document}
