@@ -1,13 +1,5 @@
 # Fdb version 4
-["bibtex mid_project_report"] 1729701544.14258 "mid_project_report.aux" "mid_project_report.bbl" "mid_project_report" 1729701994.37361 0
-  "./egbib.bib" 1729623197 981 ce2754a99c542265dfc58835f19fac9d ""
-  "./ieee_fullname.bst" 1729623197 21040 72b73f4cb1c51eaa1a7af8ecad2b6bfb ""
-  "mid_project_report.aux" 1729701993 3668 11ca0758e5537126d84fc7b7f3a3a121 "pdflatex"
-  (generated)
-  "mid_project_report.bbl"
-  "mid_project_report.blg"
-  (rewritten before read)
-["pdflatex"] 1729701992.30704 "c:/Users/himan/Desktop/Machine-Learning-Project/mid-project-report/mid_project_report.tex" "mid_project_report.pdf" "mid_project_report" 1729701994.37467 0
+["pdflatex"] 1729703638.09743 "c:/Users/himan/Desktop/Machine-Learning-Project/mid-project-report/mid_project_report.tex" "mid_project_report.pdf" "mid_project_report" 1729703639.63405 0
   "1.png" 1729675651 46861 4f15f236fd9ec89a5aad816240c1ab88 ""
   "2.png" 1729698334 29100 14cf7653815260d68b3b720127beb90e ""
   "3.png" 1729698780 69391 5b93bbb4b4f3746f3bd5689f374f7b21 ""
@@ -124,13 +116,12 @@
   "C:/Users/himan/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657800696 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/himan/AppData/Local/Programs/MiKTeX/tex/latex/tools/xspace.sty" 1700599895 4545 9f5ea23ab1c91476c42749893f790666 ""
   "C:/Users/himan/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "c:/Users/himan/Desktop/Machine-Learning-Project/mid-project-report/mid_project_report.tex" 1729701991 20579 15525f02d7b05d3b9fca75a54b37d327 ""
+  "c:/Users/himan/Desktop/Machine-Learning-Project/mid-project-report/mid_project_report.tex" 1729703637 21331 2a482c7d063bb826313898e610d65c28 ""
   "cvpr.sty" 1729623197 8433 152eb50f207a461eca830f58b1164f40 ""
   "cvpr_eso.sty" 1729623197 3987 6aa7c08ff2621006e0603349e40a30a8 ""
   "eso-pic.sty" 1729623197 9727 d2935ae95b5cd343fcf5887ff530288d ""
-  "mid_project_report.aux" 1729701993 3668 11ca0758e5537126d84fc7b7f3a3a121 "pdflatex"
-  "mid_project_report.bbl" 1729701544 65 d49dbf9d4b1773efa2d694c4016814c1 "bibtex mid_project_report"
-  "mid_project_report.tex" 1729701991 20579 15525f02d7b05d3b9fca75a54b37d327 ""
+  "mid_project_report.aux" 1729703639 3648 4fda702034a3607ba8a5b5b8d8faaf6c "pdflatex"
+  "mid_project_report.tex" 1729703637 21331 2a482c7d063bb826313898e610d65c28 ""
   "xd.jpg" 1729699834 87025 bbe1f303d8afc3dbabf49dfd0a0d38cb ""
   (generated)
   "mid_project_report.aux"

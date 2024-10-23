@@ -9,7 +9,6 @@
 
 \usepackage[top=0.7in, bottom=0.7in, left=0.7in, right=0.7in]{geometry} % Adjust margins here
 
-
 \usepackage[breaklinks=true,bookmarks=false]{hyperref}
 
 \cvprfinalcopy
@@ -36,13 +35,15 @@ Indraprastha Institute of Information Technology, Delhi\\
 
 %-------------------------------------------------------------------------
 
-\section{Abstract}
+\begin{abstract}
 
 Our project seeks to address the critical issue of detecting deepfake images and AI-generated content, which have become increasingly sophisticated and challenging to distinguish from real media. 
 The goal is to enhance the ability to discern genuine content from fabricated images, thereby reducing the potential for misinformation.
 
-\section{Introduction}
+\end{abstract}
 
+\vspace{-5pt}
+\section{Introduction}
 \subsection{Problem Statement}
 
 The recent rise in AI content, particularly deepfake images and videos, has raised serious concerns about the integrity of information online. 
@@ -244,18 +245,16 @@ Despite these efforts, the dimensionality reduction resulted in the \textbf{loss
 
 To overcome this limitation, we plan to adopt \textbf{deep learning techniques}, which are better equipped to handle complex, high-dimensional image data. These methods, combined with advanced augmentation strategies, are expected to significantly enhance the \textbf{accuracy} and \textbf{robustness} of our AI-generated image detection system.
 
-{\small
-\bibliographystyle{ieee_fullname}
-\bibliography{egbib}
-}
-% 1. \href{https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html}{SIFT (Scale-Invariant Feature Transform)}
-
-% 2. \href{https://machinelearningmastery.com/opencv_hog/}{HOG (Histogram of Oriented Gradients)}
-
-% 3. \href{https://aihalapathirana.medium.com/understanding-the-local-binary-pattern-lbp-a-powerful-method-for-texture-analysis-in-computer-4fb55b3ed8b8}{Local Binary Pattern (LBP)}
-
-% 4. \href{https://scikit-learn.org/1.5/modules/svm.html}{SVM (Support Vector Machine)}
-
-% 5. \href{https://scikit-learn.org/1.5/modules/svm.html}{Random Forest}
+\begin{thebibliography}{6}
+    \bibitem{SIFT} Detecting Fake Images Using Machine Learning. Available: \url{https://ijrpr.com/uploads/V4ISSUE4/IJRPR11629.pdf}
+    \bibitem{SIFT} Deep Learning for Image Authentication: A Comparative Study on Real and AI-Generated Image Classification. Available: \url{https://www.researchgate.net/publication/375952278_Deep_Learning_for_Image_Authentication_A_Comparative_Study_on_Real_and_AI-Generated_Image_Classification}
+    \bibitem{SIFT} Exploring and Analyzing Image Data with Python. Available: \href{https://medium.com/@sehjadkhoja0/title-exploring-and-analyzing-image-data-with-python-79a7f72f4d2b}{link}
+    \bibitem{SIFT} SIFT (Scale-Invariant Feature Transform). Available: \url{https://docs.opencv.org/4.x/da/df5/tutorial_py_sift_intro.html}
+    \bibitem{HOG} HOG (Histogram of Oriented Gradients). Available: \url{https://machinelearningmastery.com/opencv_hog/}
+    \bibitem{LBP} Local Binary Pattern (LBP). Available: \href{https://aihalapathirana.medium.com/understanding-the-local-binary-pattern-lbp-a-powerful-method-for-texture-analysis-in-computer-4fb55b3ed8b8}{link}
+    \bibitem{SVM} SVM (Support Vector Machine). Available: \url{https://scikit-learn.org/1.5/modules/svm.html}
+    \bibitem{RF} Random Forest. Available: \url{https://scikit-learn.org/1.5/modules/svm.html}
+\end{thebibliography}
+    
 
 \end{document}
