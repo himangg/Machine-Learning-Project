@@ -7,7 +7,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
-\usepackage[top=0in, bottom=0.7in, left=0.7in, right=0.7in]{geometry} % Adjust margins here
+\usepackage[top=0.7in, bottom=0.7in, left=0.7in, right=0.7in]{geometry} % Adjust margins here
 
 
 \usepackage[breaklinks=true,bookmarks=false]{hyperref}
@@ -20,6 +20,7 @@
 \begin{document}
 
 \title{\begin{center}
+    \vspace{-1.75cm}
     DeepDetect : Detect Fake and AI-generated Images
 \end{center}
 Mid-Semester Project Report}
@@ -56,7 +57,39 @@ The paper "Detecting Fake Images Using Machine Learning" by Mr. Akash K, Miss. A
 \subsection{\href{https://www.researchgate.net/publication/375952278_Deep_Learning_for_Image_Authentication_A_Comparative_Study_on_Real_and_AI-Generated_Image_Classification}{Deep Learning for Image Authentication: A Comparative Study on Real and AI-Generated Image Classification}}
 The effectiveness of deep learning models in differentiating real images from AI-generated ones is investigated in the paper "Deep Learning for Image Authentication: A Comparative Study on Real and AI-Generated Image Classification" by Gaye Ediboglu Bartos and Serel Akyol. The research is centered around two models: Residual Networks (ResNet) and Variational Autoencoders (VAEs). ResNet, renowned for its strong feature extraction abilities, reached an impressive 94\% accuracy in distinguishing between real and synthetic images in the CIFAKE dataset, comprising 60,000 real and 60,000 AI-generated images. On the other hand, VAEs, taking an anomaly detection stance, had a lower accuracy of 71\% because of their generative nature and less discriminative architecture. The paper highlights how crucial it is to tune hyperparameters, such as batch sizes and epochs, in order to improve model performance. The findings show that ResNet is better for image authentication tasks than VAEs, which had difficulty with the CIFAKE dataset's complexity. In summary, the study emphasizes the importance of choosing the right model and optimizing it for specific tasks to improve the detection of AI-generated images. It indicates that ResNet's discriminative capabilities make it the best option for these tasks.
 
-\section{Dataset}
+\section{Dataset Description: Real vs. Deepfake Image Detection}
+
+This dataset supports the task of detecting whether a human face image is real or a deepfake. It consists of manipulated and real images, with the manipulated images generated using various techniques. The dataset is well-suited for research in deepfake detection, machine learning ethics, and related fields.
+
+\subsection{Structure and Composition}
+
+The dataset is divided into three main directories: \texttt{Train}, \texttt{Test}, and \texttt{Validation}, each containing two subdirectories:
+\begin{itemize}
+    \item \texttt{Real}: Images of real human faces.
+    \item \texttt{Fake}: Deepfake images generated using machine learning techniques.
+\end{itemize}
+
+Each image is a \texttt{256 x 256} pixel \texttt{jpg} file, standardized for model input. This structure ensures easy handling for training and testing.
+
+\subsection{Source and Processing}
+
+The dataset is derived from \url{https://zenodo.org/record/5528418#.YpdlS2hBzDd} and has undergone preprocessing, including resizing to \texttt{256 x 256} pixels, to enhance its usability in machine learning tasks. The dataset remains static with no planned updates.
+
+\subsection{Usability of Dataset}
+
+The dataset is rated with a usability score of \textbf{6.25} and includes tags such as \texttt{Image}, \texttt{Social Networks}, \texttt{Research}, \texttt{People and Society}, and \texttt{Machine Learning Ethics}. It is ideal for applications in deepfake detection and ethical AI research.
+
+
+\subsection{Directory Structure}
+
+\begin{itemize}
+    \item \texttt{Train}: Training set with real and fake subdirectories.
+    \item \texttt{Test}: Testing set with real and fake subdirectories.
+    \item \texttt{Validation}: Validation set, similarly structured.
+\end{itemize}
+
+This organized structure facilitates seamless integration into machine learning pipelines, supporting model development stages like training, testing, and validation.
+
 \section{Methodology}
 \begin{figure}[h]
     \centering
@@ -65,7 +98,38 @@ The effectiveness of deep learning models in differentiating real images from AI
 \end{figure}
 \subsection{Why Resize}
 We resized the images to enhance computational efficiency and model performance. High-resolution images contain millio of pixels, leading to significant computational demands during training and inference. By reducing the image size, we lower the number of features, resulting in faster processing times and reduced memory usage. Additionally, traditional machine learning techniques, like SVMs and Random Forests, struggle with high-dimensional data due to the "curse of dimensionality," making it difficult to detect meaningful patterns.
-\subsection{Pre-processing and Augmentation}
+\subsection{Pre-processing and Data Augmentation}
+
+To ensure optimal model performance, we applied both pre-processing and data augmentation techniques to the dataset. \textbf{Pre-processing} aims to standardize and clean the data, preparing it for model training, while \textbf{Data Augmentation} artificially expands the dataset, introducing variability that helps the model generalize better to unseen data. For augmentation, we utilized the \textit{Albumentations} library, which offers efficient augmentation strategies. The techniques applied are as follows:
+
+\subsubsection{Data Augmentation Techniques}
+
+\begin{itemize}
+    \item \textbf{Spatial Transformations:} We employed spatial transformations such as \textbf{Random 90-Degree Rotations}, \textbf{Horizontal Flip}, and \textbf{Vertical Flip}, each with a 50\% probability (\texttt{p=0.5}). These transformations introduce variation in the orientation of the images without altering the essential features, allowing the model to become invariant to the position of key features.
+    
+    \item \textbf{Image Quality Transformations:} To account for real-world imperfections, we applied \textbf{Gaussian Noise} and \textbf{Blurring} to a subset of images (\texttt{p=0.2}). This step ensures the model remains robust even when presented with low-quality or distorted images, such as those affected by noise or motion blur.
+    
+    \item \textbf{Color Transformations:} We introduced variation in lighting and color properties using \textbf{Random Brightness/Contrast Adjustments} and \textbf{Hue/Saturation/Value (HSV) Shifts}, each with a 30\% probability (\texttt{p=0.3}). These transformations help the model handle different lighting conditions and color variations common in real-world environments.
+    
+    \item \textbf{Mild Distortions:} To simulate minor geometric distortions, we included \textbf{Optical Distortion} and \textbf{Grid Distortion} with a 20\% probability (\texttt{p=0.2}). These introduce slight warping and distortions, making the model more resilient to variations in perspective or imperfections during image capture.
+\end{itemize}
+
+\subsubsection{Augmentation Pipeline}
+
+The augmentation process was implemented through a custom pipeline using \texttt{Albumentations}. The pipeline includes the following steps:
+\begin{enumerate}
+    \item \textbf{Image Selection:} From each dataset split (\texttt{Train}, \texttt{Test}, \texttt{Validation}), we randomly selected a fraction of the images (approximately 10\%) for augmentation, ensuring diversity while preserving the integrity of the original dataset.
+    
+    \item \textbf{Image Augmentation:} Each selected image underwent the aforementioned transformations, and the augmented outputs were saved in their respective directories.
+    
+    \item \textbf{Visualization:} To validate the transformations, we visualized pairs of original and augmented images to ensure the correctness and consistency of the augmentation pipeline, and to verify that key image features were preserved.
+    
+    \item \textbf{Data Recording:} After augmentation, we created CSV files for each dataset split, containing the paths of the augmented images, the original images, their corresponding labels, and split information, facilitating smooth integration into the training pipeline.
+\end{enumerate}
+
+This combined pre-processing and augmentation strategy was carefully designed to enhance model generalization and mitigate overfitting, particularly when working with limited datasets. By introducing diverse transformations, the model can better handle variability in real-world data while maintaining strong performance across all dataset splits.
+
+
 
 \subsection{Feature Extraction}
 \textbf{Histogram of Oriented Gradients (HOG)} is a feature descriptor used in image processing and computer vision. It captures the distribution of gradients and edge directions within an image, effectively representing the shape and structure of objects. HOG is especially useful for object detection due to its invariance to changes in illumination and its ability to handle variations in object scale. 
@@ -159,5 +223,16 @@ The SVM model utilizing Scale-Invariant Feature Transform (SIFT) performed bette
 
 
 \section{Conclusion}
+The traditional models, such as \textbf{Support Vector Machines (SVM)} and \textbf{Random Forest}, have not delivered satisfactory results. A key challenge has been the \textbf{high dimensionality} of the image data, which these models struggle to manage efficiently. To address this, we applied the following pre-processing steps:
+
+\begin{itemize}
+    \item \textbf{Image Resizing:} Images were resized to reduce dimensionality, helping the models handle them more effectively.
+    \item \textbf{Feature Extraction:} Techniques such as \textbf{Histogram of Oriented Gradients (HOG)}, \textbf{Local Binary Patterns (LBP)}, and \textbf{Scale-Invariant Feature Transform (SIFT)} were used to extract features from the images. These methods aimed to capture essential patterns while reducing the dimensional complexity of the data.
+\end{itemize}
+
+Despite these efforts, the dimensionality reduction resulted in the \textbf{loss of crucial information}, which hindered the performance of our models.
+
+To overcome this limitation, we plan to adopt \textbf{deep learning techniques}, which are better equipped to handle complex, high-dimensional image data. These methods, combined with advanced augmentation strategies, are expected to significantly enhance the \textbf{accuracy} and \textbf{robustness} of our AI-generated image detection system.
+
 \section{References}
 \end{document}
