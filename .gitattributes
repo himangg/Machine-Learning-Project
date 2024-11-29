@@ -1,1 +1,2 @@
 svm_hog_model.pkl filter=lfs diff=lfs merge=lfs -text
+svm_lbp_full_model.pkl filter=lfs diff=lfs merge=lfs -text
